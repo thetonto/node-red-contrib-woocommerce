@@ -114,6 +114,52 @@ module.exports = function (RED) {
             // Always executed.
           });
         };
+      if (config.method == 'DELETE'){
+        api.delete(cmdData.endpoint, cmdData.options)
+          .then((response) => {
+            // Successful request
+            msg.payload = response
+                node.status({ fill: 'green', shape: 'dot', text: 'Connected' })
+                send(msg)
+                done()
+                
+          })
+          .catch((error) => {
+            // Invalid request, for 4xx and 5xx statuses
+            // grab the error messasge and send as payload.
+              msg.payload = error.message
+              // Report back the error
+              done(error)
+              node.status({ fill: 'red', shape: 'dot', text: 'error' })
+              send(msg)
+          })
+          .finally(() => {
+            // Always executed.
+          });
+        };
+      if (config.method == 'OPTIONS'){
+        api.options(cmdData.endpoint, cmdData.options)
+          .then((response) => {
+            // Successful request
+            msg.payload = response
+                node.status({ fill: 'green', shape: 'dot', text: 'Connected' })
+                send(msg)
+                done()
+                
+          })
+          .catch((error) => {
+            // Invalid request, for 4xx and 5xx statuses
+            // grab the error messasge and send as payload.
+              msg.payload = error.message
+              // Report back the error
+              done(error)
+              node.status({ fill: 'red', shape: 'dot', text: 'error' })
+              send(msg)
+          })
+          .finally(() => {
+            // Always executed.
+          });
+        };
     })
   }
 

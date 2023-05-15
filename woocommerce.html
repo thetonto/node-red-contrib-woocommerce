@@ -17,10 +17,10 @@
 <script type="text/x-red" data-template-name="woocommerce-config">
     <div id="node-config-woocommerce-api">
         <div class="form-row">
-            <p style="margin-top: 10px;"><b>1.</b> <span data-i18n="woocommerce.register"></span> </p>
+            <p style="margin-top: 10px;"><b>1.</b> <span data-i18n="woocommerce.label.register"></span> </p>
         </div>
         <div class="form-row">
-            <p style="margin-top: 10px;"><b>2.</b> <span data-i18n="woocommerce.label.copy"></span>:</p>
+            <p style="margin-top: 10px;"><b>2.</b> <span data-i18n="woocommerce.label.copy"></span></p>
         </div>
         <div class="form-row">
             <label style="margin-left: 10px; margin-right: -10px;" for="node-config-input-siteURL"><i class="fa fa-link"></i> <span data-i18n="woocommerce.label.url"></span></label>
@@ -31,7 +31,7 @@
             <input type="text" id="node-config-input-consumerKey">
         </div>
         <div class="form-row">
-            <label style="margin-left: 10px; margin-right: -10px;" for="node-config-input-consumerSecret"><i class="fa fa-user-secret"></i> <span data-i18n="woocommerce.label.secret"></span></label>
+            <label style="margin-left: 10px; margin-right: -10px;" for="node-config-input-consumerSecret"><i class="fa fa-user-secret"></i> <span data-i18n="woocommerce.label.secret"></span></span></label>
             <input type="text" id="node-config-input-consumerSecret">
         </div>
 
@@ -40,12 +40,12 @@
 
 <script type="text/javascript">
     RED.nodes.registerType('woocommerce',{
-        category: 'e-commerce',
+        category: 'ecommerce',
         color: '#C0DEED',
         defaults: {
+            name: {value:""},
             wooAPI: {type:"woocommerce-config", required:true},
             method: {value:""},
-            podSelector: {value:""},
         },
         inputs:1,
         outputs:1,
@@ -54,7 +54,7 @@
             return this.name||"woocommerce"
         },
         oneditprepare: function() {  
-            $("#node-input-example4").typedInput({
+            $("#node-input-method").typedInput({
             types: [
             {
                 value: "method",
@@ -62,6 +62,8 @@
                     { value: "GET", label: "GET"},
                     { value: "POST", label: "POST"},
                     { value: "PUT", label: "PUT"},
+                    { value: "DELETE", label: "DELETE"},
+                    { value: "OPTIONS", label: "OPTIONS"},
                 ]
             }
         ]
@@ -72,22 +74,15 @@
 
 <script type="text/x-red" data-template-name="woocommerce">
     <div class="form-row">
-        <label for="node-input-wooAPI">API Configuration</label>
+        <label for="node-input-wooAPI">Woo API</label>
         <input type="text" id="node-input-wooAPI">
     </div>
-    <div class="form-row">
-        <label for="node-input-pod"><i class="fa fa-superpowers"></i> <span data-i18n="sensibo.label.podname"></span></label>
-        <input type="text" id="node-input-pod" style="width:60%;">
-        <a id="node-lookup-pod" class="btn"><i id="node-lookup-pod-icon" class="fa fa-search"></i></a>
+
+    <div class="form-row"> 
+        <label for="node-input-method"><i class="fa fa-cogs"></i> <span data-i18n="woocommerce.label.method"></span></label>
+        <input id="node-input-method" name="Method" type="text">
     </div>
-    <div class="form-row">
-        <label for="node-input-method"><i class="icon-tag"></i><span data-i18n="woocommerce.label.method"></label>
-        <select name="http-method" id="node-input-method" placeholder="Method">
-            <option value="GET">GET</option>
-            <option value="POST">POST</option>
-            <option value="PUT">PUT</option>
-        </select>
-    </div>
+
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">

@@ -126,3 +126,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 node-red-contrib-woocommerce.code-workspace
+
+test/credentials.js
