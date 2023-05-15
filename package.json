@@ -14,7 +14,7 @@
   "author": "David deMarco",
   "license": "ISC",
   "dependencies": {
-    "@woocommerce/woocommerce-rest-api": "^1.0.1"
+    "woocommerce-rest-ts-api": "^7.0.0"
   },
   "repository": {
     "type": "git",

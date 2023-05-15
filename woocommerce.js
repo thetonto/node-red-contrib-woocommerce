@@ -1,6 +1,6 @@
 /* cSpell:disable */
 
-const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
+const WooCommerceRestApi = require("woocommerce-rest-ts-api").default;
 
 module.exports = function (RED) {
 
