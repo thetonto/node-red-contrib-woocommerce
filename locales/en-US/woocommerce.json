@@ -1,0 +1,16 @@
+{
+    "woocommerce": {
+        "label": {
+            "woocommerce": "Credentials",
+            "register": "Create the API Keys on your Woocommerce website.",
+            "copy": "Copy the API key here and give it a name",
+            "key": "Consumer Key",
+            "secret": "Consumer Secret",
+            "url" : "Website URL",
+            "method" : "Method"
+            
+	    "lang": "Language",
+            "units": "Units"
+        }
+    }
+}
