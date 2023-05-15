@@ -97,33 +97,24 @@
 
 <script type="text/x-red" data-help-name="woocommerce">
     <p>Connects to an instance of the Woocommerce API</p>
+
     <h3>Configuration</h3>
-    <p>An API needs to be obtained from Sensibo</p>
+    <p>You will need to create an API set of keys which is fully documented <a href="https://woocommerce.com/document/woocommerce-rest-api/">here.</a>&nbsp; Additional information on the endpoints and the options can be found in the <a href="http://ttps://woocommerce.github.io/woocommerce-rest-api-docs/?shell#introduction">API Documentation</a>, then follow the examples for node.js</p>
 
     <h3>Properties</h3>
     <dl class="message-properties">
-    <dt>pod <span class="property-type">selector</span></dt>
-    <dd>The pod to get the measurements from.  Click on magnifying glass to get list of available pods from sensibo.  This may take a moment to resolve from the server</dd>
+    <dt>Method <span class="property-type">method</span></dt>
+    <dd>Select the method that the node will use (GET, PUT, POST)</dd>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>payload
-            <span class="property-type">string | buffer</span>
-        </dt>
-        <dd> Payload is not currently assigned to a function</dd>
-        <dt class="optional">msg.on<span class="property-type">string/binary</span></dt>
-        <dd> Turn the air conditioning unit on and off. true/false.  Bug fixed so both types will accepted</dd>
-        <dt class="optional">msg.swing<span class="property-type">string</span></dt>
-        <dd> Sets the swing mode.</dd>
-        <dt class="optional">msg.mode<span class="property-type">string</span></dt>
-        <dd> Set the operating mode: cool/heat/fan/dry/auto'</dd>
-        <dt class="optional">msg.fanlevel<span class="property-type">string</span></dt>
-        <dd> Set the fan level: quiet/low/medium low/medium/medium high/high/auto.  Note:  medium high/low may not be supported on all units</dd>
-        <dt class="optional">msg.targetTemperature<span class="property-type">number</span></dt>
-        <dd> Sets the target temperature to reach.'</dd>
-        
+        <dt>payload<span class="property-type">string | buffer</span></dt>
+        <dd> Payload is the data to be sent to Woocommerce (POST/PUT Method).</dd>
+        <dt> msg.endpoint<span class="property-type">string</span></dt>
+        <dd> The endpoint data that is to be sent to.  ie orders, products.  orders/2140 will retrieve order 2140</dd>
 
-
+        <dt class="optional">msg.params<span class="property-type">string</span></dt>
+        <dd> Any query params to be sent</dd>    
     </dl>
 
     <h3>Outputs</h3>
@@ -131,13 +122,13 @@
         <li>Standard output
             <dl class="message-properties">
                 <dt>payload <span class="property-type">object</span></dt>
-                <dd>Status of the request to Sensibo</dd>
+                <dd>Contains the full response from Woocommerce</dd>
             </dl>
         </li>
         <li>Standard error
             <dl class="message-properties">
                 <dt>payload <span class="property-type">string</span></dt>
-                <dd>Will return the error received from the Sensibo server</dd>
+                <dd>Will return the error received from the Woocommerce API</dd>
             </dl>
         </li>
     </ol>
