@@ -17,6 +17,14 @@ msg.payload - data to be sent to WooCommerce - No payload required for GET/DELET
 This is basically a wrapper around the Node API
 https://www.npmjs.com/package/woocommerce-rest-ts-api
 
-Which is an updated version of the node api that the Woocommerce site will link you to.
+So please follow the examples there.  I will post some examples when I remember how it is done!
 
+### Credits
+As mentioned this is basically just a node red wrapper around the node wrapper for the WooCommerce API.
+Original version was by the WooCommerce team.
+
+https://github.com/woocommerce/woocommerce-rest-api-js-lib
+
+but had not been updated for the last 2 years.  Then I found an recently updated version which fixed many dependencies by Yuri Lima 
+https://www.npmjs.com/package/woocommerce-rest-ts-api
 
