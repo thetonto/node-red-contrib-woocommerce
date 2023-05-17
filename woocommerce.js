@@ -30,6 +30,7 @@ module.exports = function (RED) {
       } else
       {
         //Error out as no endpoint has been defined
+        this.log('no endpoint has been defined');
         msg.payload = "No Endpoint Defined"
         // Report back the error
         if (done) {
@@ -45,7 +46,7 @@ module.exports = function (RED) {
       if (typeof msg.params !== 'undefined') {
         cmdData.params = msg.params
       };
-     
+      this.log('A message has been received');
       if (config.method == 'GET'){
         this.log('Configured Method is ' + config.method);
         api.get(cmdData.endpoint, cmdData.params)
