@@ -1,0 +1,140 @@
+[
+    {
+        "id": "79d52fd010a4d2df",
+        "type": "woocommerce",
+        "z": "2829a8ca1a25c7b8",
+        "name": "Get Order",
+        "wooAPI": "fbcfc172e0f613f9",
+        "method": "GET",
+        "x": 400,
+        "y": 520,
+        "wires": [
+            [
+                "fe4e04d26de931f1"
+            ]
+        ]
+    },
+    {
+        "id": "0372e0c2f36ed2fc",
+        "type": "inject",
+        "z": "2829a8ca1a25c7b8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "endpoint",
+                "v": "orders/2172",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            [
+                "79d52fd010a4d2df"
+            ]
+        ]
+    },
+    {
+        "id": "fe4e04d26de931f1",
+        "type": "debug",
+        "z": "2829a8ca1a25c7b8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "57d163c80cf0d33a",
+        "type": "woocommerce",
+        "z": "2829a8ca1a25c7b8",
+        "name": "Update Order",
+        "wooAPI": "fbcfc172e0f613f9",
+        "method": "PUT",
+        "x": 420,
+        "y": 580,
+        "wires": [
+            [
+                "573447ea019bfe72"
+            ]
+        ]
+    },
+    {
+        "id": "d7745cf7369a1659",
+        "type": "inject",
+        "z": "2829a8ca1a25c7b8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "endpoint",
+                "v": "orders/2172",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"status\":\"completed\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 580,
+        "wires": [
+            [
+                "57d163c80cf0d33a"
+            ]
+        ]
+    },
+    {
+        "id": "573447ea019bfe72",
+        "type": "debug",
+        "z": "2829a8ca1a25c7b8",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "fbcfc172e0f613f9",
+        "type": "woocommerce-config",
+        "siteURL": "https://yourwebsite",
+        "consumerKey": "ck_your consumerKEY",
+        "consumerSecret": "cs_your consumerSecret"
+    }
+]

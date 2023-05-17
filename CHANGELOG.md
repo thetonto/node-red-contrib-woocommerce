@@ -10,6 +10,8 @@ Found an updated version of the underlying Woocommerce API that slotted directly
 
 Added DELETE and OPTIONS methods.  Updated all the help and general tidy ups.  Also started first batch of automated test scripts
 
+**V 0.3.2**
 
+Now includes examples of usage.  Correct attribution to underlying API
 
   

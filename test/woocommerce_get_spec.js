@@ -11,7 +11,7 @@ helper.init(require.resolve('node-red'))
 
 describe('WooCommerce Node', function () {
   // Change timeout as the woo is quite slow
-  this.timeout(10000)
+  this.timeout(40000)
   beforeEach(function (done) {
     helper.startServer(done)
   })
@@ -58,25 +58,15 @@ describe('WooCommerce Node', function () {
     helper.load(woo, flow, function () {
       var n1 = helper.getNode('n1')
       var nh = helper.getNode('nh')
+      console.log('Test message')
       nh.on('input', function (msg) {
         console.log('Testing:' + JSON.stringify(msg))
-        msg.should.have.property('payload.statusText', 'OK')
+        // msg.payload.employees[0].should.have.property('firstName', 'John');
+        msg.payload.should.have.property('statusText', 'OK')
         done()
       })
-      n1.receive({endpoint: 'orders/2172' })
-    })
-  })
-
-  it('should get full configuration', function (done) {
-    helper.load(woo, config.configflow, function () {
-      var n1 = helper.getNode('n1')
-      var nh = helper.getNode('nh')
-      nh.on('input', function (msg) {
-        console.log('Testing:' + JSON.stringify(msg))
-        msg.should.have.property('status', 'success')
-        done()
-      })
-      n1.receive({ payload: 'getMeasurement' })
+      //jn1.receive({payload:jsonString,topic: "bar"});
+      n1.receive({payload: '', endpoint: 'orders/2172' })
     })
   })
 })
